@@ -1,0 +1,14 @@
+const labelApartmentName = 'Apartment Name';
+const hintApartmentName = 'Enter Apartment Name';
+const labelApartmentAddress = 'Apartment Address';
+const hintApartmentAddress = 'Enter Apartment Address';
+const labelApartmentFloor = 'Apartment Floor';
+const hintApartmentFloor = 'Enter Apartment Floor';
+const labelApartmentFlats = 'Apartment Flats';
+const hintApartmentFlats = 'Enter Apartment Flats';
+const labelApartmentBuild = 'Apartment Build Date';
+const hintApartmentBuild = 'Enter Apartment Build Date';
+const labelHaveElevator = 'Is Have Elevator?';
+const hintHaveElevator = 'Select Elevator Status';
+const labelApartmentDate = 'Apartment Build Date';
+const hintApartmentDate = 'Select Apartment Build Date';

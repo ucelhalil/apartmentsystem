@@ -1,0 +1,13 @@
+import 'package:firebase_auth/firebase_auth.dart';
+
+import '../../feauture/interface/i_firebase_auth.dart';
+
+final class AuthUser extends MyFirebaseAuth {
+  static AuthUser? _of;
+  static AuthUser get of => _of ??= AuthUser._();
+  AuthUser._();
+
+  User? get currentUser => auth.currentUser;
+
+  Stream<User?> get authStateChanges => auth.authStateChanges();
+}

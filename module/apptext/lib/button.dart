@@ -1,0 +1,9 @@
+const loginButton = 'Login';
+const registerButton = 'Register';
+const sendButton = 'Send';
+const saveButton = 'Save';
+const forgotButton = 'Forgot password';
+const registerTextButton = 'Dont have an account? Register';
+const loginTextButton = 'Already have an account? Login';
+const goToLoginButton = 'Go login';
+const goToRegisterButton = 'Go register';

@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "246928479035",
+    "project_id": "apartment-systems",
+    "storage_bucket": "apartment-systems.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:246928479035:android:4b12938f27818cf6295d1e",
+        "android_client_info": {
+          "package_name": "com.example.apartment_system"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDK0bmg8I9HhTdFQn0Uvc-ke84TQn4Wu1U"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
