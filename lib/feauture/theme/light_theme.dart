@@ -19,7 +19,7 @@ final class LightTheme extends ITheme {
   @override
   ElevatedButtonThemeData get elevatedButton => ElevatedButtonThemeData(
         style: ButtonStyle(
-          foregroundColor: MaterialStateProperty.all(_scheme.primary),
+          foregroundColor: WidgetStateProperty.all(_scheme.primary),
         ),
       );
 
@@ -28,7 +28,7 @@ final class LightTheme extends ITheme {
         colorScheme: _scheme,
         elevatedButtonTheme: elevatedButton,
         appBarTheme: appBar,
-        scaffoldBackgroundColor: _scheme.background,
+        scaffoldBackgroundColor: _scheme.surface,
         primaryColor: _scheme.primary,
       );
 }

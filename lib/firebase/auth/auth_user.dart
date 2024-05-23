@@ -10,4 +10,16 @@ final class AuthUser extends MyFirebaseAuth {
   User? get currentUser => auth.currentUser;
 
   Stream<User?> get authStateChanges => auth.authStateChanges();
+
+  bool get isValidEmail => currentUser?.emailVerified ?? false;
+
+  Future<void> sendEmailVerification() async {
+    if(!isValidEmail) {
+      await currentUser?.sendEmailVerification();
+    }
+  }
+
+  Future<void> signOut() async {
+    await auth.signOut();
+  }
 }

@@ -49,7 +49,7 @@ class CustomButton extends StatelessWidget {
         shape: RoundedRectangleBorder(
           borderRadius: SizeType.hexa.size.radiusCircle,
           side: BorderSide(
-            color: context.colorScheme.onBackground,
+            color: context.colorScheme.onSurface,
             width: 1,
           ),
         ),

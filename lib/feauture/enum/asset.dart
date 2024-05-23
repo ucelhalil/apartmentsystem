@@ -4,6 +4,7 @@ enum MyAsset {
   lock,
   email,
   emailVerified,
+  home,
   ;
 
   String get path => 'asset/icon/$name.png';

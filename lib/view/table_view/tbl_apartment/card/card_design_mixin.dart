@@ -17,7 +17,7 @@ mixin ApartmentDesignMixin on StatelessWidget {
           ),
         ],
         border: Border.all(
-          color: context.colorScheme.onBackground,
+          color: context.colorScheme.onSurface,
           width: 1,
         ),
       );
@@ -25,7 +25,7 @@ mixin ApartmentDesignMixin on StatelessWidget {
   BoxDecoration titleDecoration(BuildContext context) => BoxDecoration(
         borderRadius: SizeType.ennea.size.radiusCircleOnlyBottom,
         border: Border.all(
-          color: context.colorScheme.onBackground,
+          color: context.colorScheme.onSurface,
           width: 1,
         ),
       );

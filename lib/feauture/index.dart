@@ -6,3 +6,4 @@ export './object_notifier/index.dart';
 export './routes/index.dart';
 export './theme/index.dart';
 export './models/index.dart';
+export './other/index.dart';

@@ -6,7 +6,9 @@ final class FireUser extends BaseDBModel<FireUser> {
   final String? photoURL;
   final String? phoneNumber;
   final String? plans;
-  final DateTime? planLastDate;
+  final bool? theme;
+  final bool? language;
+  final DateTime? planDate;
   final int? apartment;
   final int? flat;
 
@@ -18,7 +20,9 @@ final class FireUser extends BaseDBModel<FireUser> {
     this.plans = 'free',
     this.apartment = 2,
     this.flat = 5,
-    this.planLastDate,
+    this.planDate,
+    this.language,
+    this.theme,
     super.createdBy,
     super.createdDate,
     super.updatedBy,
@@ -39,7 +43,9 @@ final class FireUser extends BaseDBModel<FireUser> {
     String? plans,
     int? apartment,
     int? flat,
-    DateTime? planLastDate,
+    DateTime? planDate,
+    bool? theme,
+    bool? language,
     String? createdBy,
     DateTime? createdDate,
     String? updatedBy,
@@ -56,7 +62,9 @@ final class FireUser extends BaseDBModel<FireUser> {
       photoURL: photoURL ?? this.photoURL,
       phoneNumber: phoneNumber ?? this.phoneNumber,
       plans: plans ?? this.plans,
-      planLastDate: planLastDate ?? this.planLastDate,
+      planDate: planDate ?? this.planDate,
+      theme: theme ?? this.theme,
+      language: language ?? this.language,
       apartment: apartment ?? this.apartment,
       flat: flat ?? this.flat,
       createdBy: createdBy ?? this.createdBy,
@@ -79,9 +87,12 @@ final class FireUser extends BaseDBModel<FireUser> {
       photoURL: json['photoURL'],
       phoneNumber: json['phoneNumber'],
       plans: json['plans'],
-      planLastDate: json['planLastDate'] == null
+      planDate: json['planDate'] == null
           ? null
-          : DateTime.tryParse(json['planLastDate']),
+          : DateTime.tryParse(json['planDate']),
+      theme: json['theme'] == null ? null : bool.tryParse(json['theme']),
+      language:
+          json['language'] == null ? null : bool.tryParse(json['language']),
       apartment:
           json['apartment'] == null ? null : int.tryParse(json['apartment']),
       flat: json['flat'] == null ? null : int.tryParse(json['flat']),
@@ -113,9 +124,12 @@ final class FireUser extends BaseDBModel<FireUser> {
       photoURL: json['photoURL'],
       phoneNumber: json['phoneNumber'],
       plans: json['plans'],
-      planLastDate: json['planLastDate'] == null
+      planDate: json['planDate'] == null
           ? null
-          : DateTime.tryParse(json['planLastDate']),
+          : DateTime.tryParse(json['planDate']),
+      theme: json['theme'] == null ? null : bool.tryParse(json['theme']),
+      language:
+          json['language'] == null ? null : bool.tryParse(json['language']),
       apartment:
           json['apartment'] == null ? null : int.tryParse(json['apartment']),
       flat: json['flat'] == null ? null : int.tryParse(json['flat']),
@@ -148,7 +162,9 @@ final class FireUser extends BaseDBModel<FireUser> {
         phoneNumber,
         plans,
         apartment,
-        planLastDate,
+        planDate,
+        theme,
+        language,
         flat,
         createdBy,
         createdDate,
@@ -169,7 +185,9 @@ final class FireUser extends BaseDBModel<FireUser> {
       'photoURL': photoURL,
       'phoneNumber': phoneNumber,
       'plans': plans,
-      'planLastDate': planLastDate?.toIso8601String(),
+      'planDate': planDate?.toIso8601String(),
+      'theme':theme?.toString(),
+      'language':language?.toString(),
       'apartment': apartment?.toString(),
       'flat': flat?.toString(),
       'createdBy': createdBy,

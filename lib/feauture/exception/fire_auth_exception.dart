@@ -1,5 +1,5 @@
 import 'package:apartment_system/index.dart';
-import 'package:apptext/auth.dart';
+import 'package:apptext/apptext.dart';
 import 'package:flutter/foundation.dart';
 
 class AuthErrorCode {

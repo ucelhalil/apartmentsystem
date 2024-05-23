@@ -1,8 +1,11 @@
 import 'package:apartment_system/index.dart';
+import 'package:apptext/apptext.dart';
 import 'package:codeofwidget/codeofwidget.dart';
 import 'package:flutter/material.dart';
 
 part 'home_float_button.dart';
+part 'home_drawer.dart';
+part 'home_appbar.dart';
 
 class HomeView extends StatelessWidget with _HomeViewMixin {
   const HomeView({super.key});
@@ -13,9 +16,9 @@ class HomeView extends StatelessWidget with _HomeViewMixin {
     getUserData();
     // ------------------------
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Home'),
-      ),
+      key:ViewScaffoldKey.homeView,
+      appBar:  const _HomeAppBar(),
+      drawer: const _HomeViewDrawer(),
       body: const ApartmentList(),
       floatingActionButton: const _HomeFloatingButton(),
     );
