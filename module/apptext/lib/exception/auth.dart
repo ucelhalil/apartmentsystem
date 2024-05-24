@@ -1,6 +1,4 @@
-const emailNotVerified = 'Email not verified';
-const emailNotVerifiedMessage = 'please verify your email first';
-const emailVerified = 'Email verified';
+
 const codeInvalidEmail = 'invalid-email';
 const codeInvalidEmailMessage = 'The email address is badly formatted.';
 const codeMissingAndroidPKG = 'missing-android-pkg-name';

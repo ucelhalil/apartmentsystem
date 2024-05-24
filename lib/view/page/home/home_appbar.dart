@@ -6,20 +6,11 @@ class _HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: Colors.amber,
-      height: kToolbarHeight,
+    return const CustomAppBar(
+      leading: _LeadingWidget(),
+      title: _TitleWidget(),
+      actions: _ActionWidget(),
     );
-    // return const Row(
-      
-    //   children: [
-    //     _LeadingWidget(),
-    //     Spacer(),
-    //     _TitleWidget(),
-    //     Spacer(),
-    //     _ActionWidget(),
-    //   ],
-    // );
   }
   
   @override
@@ -34,7 +25,7 @@ class _LeadingWidget extends StatelessWidget {
     return Container(
       width: 64,
       height: kToolbarHeight,
-      color: Colors.amber,
+      color: Colors.blue,
     );
   }
 }

@@ -57,7 +57,7 @@ mixin RegisterFormMixin on State<RegisterForm> {
 
     if (response.user!.emailVerified == false) {
       // ignore: use_build_context_synchronously
-      await response.user!.sendEmailVerification();
+      // await response.user!.sendEmailVerification();
       return goToEmailVerified();
     }
     // ---------------------
