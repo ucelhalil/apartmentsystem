@@ -44,6 +44,6 @@ class _ActionWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Icon(Icons.settings);
+    return const Icon(Icons.settings,size: kToolbarHeight);
   }
 }

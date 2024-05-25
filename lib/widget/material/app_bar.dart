@@ -16,7 +16,7 @@ class CustomAppBar extends StatelessWidget with _CustomAppBarMixin {
       height: height ?? kToolbarHeight,
       decoration: _boxDecoration(context),
       // -------------
-      child: Column(
+      child: Row(
         children: [
           leading ?? const SizedBox.shrink(),
           const Spacer(),
