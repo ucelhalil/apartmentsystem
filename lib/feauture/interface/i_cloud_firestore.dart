@@ -11,7 +11,7 @@ abstract class MyCloudFirestore<T> {
   DocumentReference<Map<String, dynamic>> get authUserPath {
     if (AuthUser.of.currentUser == null) {
       if (kDebugMode) debugPrint('MyCloudFirestore User is null');
-      return _authCollection.doc('');
+      throw FirestoreException('not-find-user', 'This project have not a currentuser for firebase');
     }
     return _authCollection.doc(AuthUser.of.currentUser!.uid);
   }

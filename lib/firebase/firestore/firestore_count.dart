@@ -2,6 +2,8 @@ import 'package:apartment_system/index.dart';
 import 'package:flutter/foundation.dart';
 
 final class FirestoreCount<T extends BaseDBModel> extends MyCloudFirestore<T> {
+
+  
   Future<int> count() async {
     try {
       final response = await userCollectionPath.count().get();

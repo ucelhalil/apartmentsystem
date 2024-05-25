@@ -1,3 +1,4 @@
+import 'package:apartment_system/firebase/firestore/firestore_count.dart';
 import 'package:apartment_system/index.dart';
 import 'package:apptext/apptext.dart';
 import 'package:codeofwidget/codeofwidget.dart';
@@ -6,6 +7,7 @@ import 'package:flutter/material.dart';
 part 'home_float_button.dart';
 part 'home_drawer.dart';
 part 'home_appbar.dart';
+part 'home_body.dart';
 
 class HomeView extends StatefulWidget  {
   const HomeView({super.key});
@@ -22,7 +24,7 @@ class _HomeViewState extends State<HomeView> with _HomeViewMixin {
       key:ViewScaffoldKey.homeView,
       appBar:  const _HomeAppBar(),
       drawer: const _HomeViewDrawer(),
-      body: const ApartmentList(),
+      body: const _HomeViewBody(),
       floatingActionButton: const _HomeFloatingButton(),
     );
   }
@@ -46,3 +48,4 @@ mixin _HomeViewMixin on State<HomeView> {
     await AuthUser.of.getUserData();
   }
 }
+
