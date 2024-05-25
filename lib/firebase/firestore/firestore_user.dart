@@ -1,15 +1,13 @@
-
-
 import 'package:apartment_system/index.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
 
-final class FirestoreUser extends MyCloudFirestore{
+final class FirestoreUser extends MyCloudFirestore {
   static FirestoreUser? _of;
   static FirestoreUser get of => _of ??= FirestoreUser._();
   FirestoreUser._();
 
-  Future<FireUser> get getUser  async {
+  Future<FireUser> get getUser async {
     try {
       final response = await authUserPath.get();
       if (response.exists && response.data() != null) {
@@ -17,11 +15,11 @@ final class FirestoreUser extends MyCloudFirestore{
       }
       throw FirestoreException('User Exception', 'Veri getirilemedi');
     } catch (e) {
-     throw FirestoreException('User Exception', e.toString()); 
+      throw FirestoreException('User Exception', e.toString());
     }
-  } 
+  }
 
-  Future<bool> create(UserCredential credential)async{
+  Future<bool> create(UserCredential credential) async {
     try {
       FireUser user = FireUser(
         createdDate: DateTime.now(),
@@ -39,7 +37,7 @@ final class FirestoreUser extends MyCloudFirestore{
       AuthUser.of.setFireUser = user;
       return true;
     } catch (e) {
-      if(kDebugMode) debugPrint('FirestoreUser.create: $e');
+      if (kDebugMode) debugPrint('FirestoreUser.create: $e');
       return false;
     }
   }

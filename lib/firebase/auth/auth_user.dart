@@ -7,18 +7,17 @@ final class AuthUser extends MyFirebaseAuth {
   AuthUser._();
 
   User? get currentUser => auth.currentUser;
-  late FireUser? _fireUser;
+  FireUser? _fireUser;
 // Suggested code may be subject to a license. Learn more: ~LicenseLog:2773234305.
   FireUser? get fireUser => _fireUser;
-  set setFireUser(FireUser value) => _fireUser =value;
-  
+  set setFireUser(FireUser value) => _fireUser = value;
 
   Stream<User?> get authStateChanges => auth.authStateChanges();
 
   bool get isValidEmail => currentUser?.emailVerified ?? false;
 
   Future<void> sendEmailVerification() async {
-    if(!isValidEmail) {
+    if (!isValidEmail) {
       await currentUser?.sendEmailVerification();
     }
   }
@@ -28,7 +27,7 @@ final class AuthUser extends MyFirebaseAuth {
     await auth.signOut();
   }
 
-  Future<FireUser> getUserData() async {  
+  Future<FireUser> getUserData() async {
     if (fireUser == null) {
       final response = await FirestoreUser.of.getUser;
       setFireUser = response;
@@ -36,6 +35,4 @@ final class AuthUser extends MyFirebaseAuth {
     }
     return fireUser!;
   }
-
-  
 }

@@ -19,11 +19,9 @@ final class LightTheme extends ITheme {
   @override
   ElevatedButtonThemeData get elevatedButton => ElevatedButtonThemeData(
         style: ButtonStyle(
-          foregroundColor: WidgetStateProperty.all(_scheme.primary),
+          foregroundColor: MaterialStatePropertyAll(_scheme.primary),
         ),
       );
-
-  
 
   @override
   ThemeData get theme => ThemeData.light(useMaterial3: true).copyWith(
