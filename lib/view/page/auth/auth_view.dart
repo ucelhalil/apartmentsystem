@@ -16,6 +16,7 @@ class _AuthViewState extends State<AuthView> with _AuthViewMixin {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       body: ColumnWithSpacing(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [

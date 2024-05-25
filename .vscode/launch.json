@@ -1,0 +1,65 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "apartmentsystem",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "apartmentsystem (profile mode)",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "apartmentsystem (release mode)",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        },
+        {
+            "name": "apptext",
+            "cwd": "module/apptext",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "apptext (profile mode)",
+            "cwd": "module/apptext",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "apptext (release mode)",
+            "cwd": "module/apptext",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        },
+        {
+            "name": "widget",
+            "cwd": "module/widget",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "widget (profile mode)",
+            "cwd": "module/widget",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "widget (release mode)",
+            "cwd": "module/widget",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        }
+    ]
+}

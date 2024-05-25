@@ -27,7 +27,7 @@ mixin _SplashViewMixin on State<SplashView> {
     //
   }
 
-  Future<void> goToAuth() => context.pushNamed(MyRoute.auth.name);
+  Future<void> goToAuth() => context.pushNamedAndRemoveUntil(MyRoute.auth.name);
 
   @override
   void dispose() {

@@ -13,6 +13,7 @@ class CustomAppBar extends StatelessWidget with _CustomAppBarMixin {
   @override
   Widget build(BuildContext context) {
     return  Container(
+      padding: SizeType.octa.size.withPaddingVertical,
       height: height ?? kToolbarHeight,
       decoration: _boxDecoration(context),
       // -------------
