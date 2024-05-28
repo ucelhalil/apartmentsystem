@@ -60,4 +60,10 @@ extension WidgetListExtension on List<Widget> {
       children: this,
     );
   }
+
+  Stack get stack {
+    return Stack(
+      children: this,
+    );
+  }
 }

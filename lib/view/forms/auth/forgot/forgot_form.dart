@@ -1,4 +1,5 @@
 import 'package:apartment_system/index.dart';
+import 'package:apptext/apptext.dart';
 import 'package:codeofwidget/codeofwidget.dart';
 import 'package:flutter/material.dart';
 
@@ -9,12 +10,12 @@ class ForgotForm extends StatefulWidget {
   const ForgotForm({super.key, required this.notifier});
 
   final AuthNotifier notifier;
-
   @override
   State<ForgotForm> createState() => _ForgotFormState();
 }
 
 class _ForgotFormState extends State<ForgotForm> with ForgotFormMixin {
+  ButtonTextLang get button => const ButtonTextLang();
   @override
   Widget build(BuildContext context) {
     return CustomFormView(
@@ -27,14 +28,14 @@ class _ForgotFormState extends State<ForgotForm> with ForgotFormMixin {
         CustomButton.small(
           onPressed: submit,
           child: WText(
-            text: LangButton.buttonSend.text,
+            text: button.send,
           ),
         ),
         // ---------------------
         TextButton(
           onPressed: goToLogin,
           child: WText(
-            text: LangButton.loginText.text,
+            text: button.loginText,
             style: const TextStyle(decoration: TextDecoration.underline),
           ),
         ),
@@ -42,7 +43,7 @@ class _ForgotFormState extends State<ForgotForm> with ForgotFormMixin {
         TextButton(
           onPressed: goToRegister,
           child: WText(
-            text: LangButton.registerText.text,
+            text: button.registerText,
             style: const TextStyle(decoration: TextDecoration.underline),
           ),
         ),

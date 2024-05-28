@@ -24,7 +24,7 @@ mixin _LoginFormMixin on State<LoginForm> {
       return context.customShowDialog(
         dialog: CustomDialog(
           child: MyDialog.error(
-            message: LangFormError.isNotFormValidate.text,
+            message: const FormErrorTextLang().formValidation,
           ).build(),
         ),
       );

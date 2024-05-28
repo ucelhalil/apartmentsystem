@@ -1,4 +1,5 @@
 import 'package:apartment_system/index.dart';
+import 'package:apptext/apptext.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
 
@@ -25,8 +26,7 @@ final class AuthRegister extends MyFirebaseAuth {
       );
     } on FirebaseAuthException catch (e) {
       return AuthUserData.error(
-        message:
-            AppLang.firebaseException[e.code]?[langNotifier.value.name] ?? '',
+        message: FirebaseExceptionLang().code(e.code),
       );
     } catch (e) {
       if (kDebugMode) debugPrint(e.toString());

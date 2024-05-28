@@ -1,4 +1,6 @@
 import 'package:apartment_system/index.dart';
+import 'package:apptext/apptext.dart';
+import 'package:apptext/map/index.dart';
 import 'package:codeofland/codeofland.dart';
 import 'package:codeofwidget/codeofwidget.dart';
 import 'package:flutter/material.dart';
@@ -62,13 +64,13 @@ class _ApartmentFormState extends State<ApartmentForm>
         ),
         // --- Elevator ---
         RadioAnswerButton(
-          title: LangApartmentForm.haveAnElevator.text,
+          title: const TBLApartmentTextLang().haveElevator,
           boolNotifier: form.elevatorNotifier,
         ),
         // --- Save Button ---
         CustomButton(
           onPressed: () async => await submit(),
-          child: WText(text: LangButton.buttonSave.text),
+          child: WText(text: const ButtonTextLang().save),
         ),
       ],
     );

@@ -1,4 +1,5 @@
 import 'package:apartment_system/firebase_options.dart';
+import 'package:apptext/apptext.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
@@ -21,7 +22,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: LangMaterial.materialAppTitle.text,
+      title: const AppTextLang().materialTitle,
       theme: LightTheme().theme,
       routes: AppRoute().route,
       initialRoute: MyRoute.splash.name,

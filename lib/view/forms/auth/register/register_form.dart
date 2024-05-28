@@ -1,4 +1,5 @@
 import 'package:apartment_system/index.dart';
+import 'package:apptext/apptext.dart';
 import 'package:codeofland/codeofland.dart';
 import 'package:codeofwidget/codeofwidget.dart';
 import 'package:flutter/material.dart';
@@ -32,14 +33,14 @@ class _RegisterFormState extends State<RegisterForm> with RegisterFormMixin {
         CustomButton.small(
           onPressed: submit,
           child: WText(
-            text: LangButton.registerText.text,
+            text: const ButtonTextLang().registerText,
           ),
         ),
         // ---------------------
         TextButton(
           onPressed: goToLogin,
           child: WText(
-            text: LangButton.loginText.text,
+            text: const ButtonTextLang().loginText,
             style: const TextStyle(decoration: TextDecoration.underline),
           ),
         ),

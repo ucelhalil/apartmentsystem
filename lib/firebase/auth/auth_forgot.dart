@@ -1,4 +1,5 @@
 import 'package:apartment_system/index.dart';
+import 'package:apptext/apptext.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 final class AuthForgot extends MyFirebaseAuth {
@@ -16,8 +17,7 @@ final class AuthForgot extends MyFirebaseAuth {
       );
     } on FirebaseAuthException catch (e) {
       return AuthUserData.error(
-        message:
-            AppLang.firebaseException[e.code]?[langNotifier.value.name] ?? '',
+        message: FirebaseExceptionLang().code(e.code),
       );
     } catch (e) {
       return AuthUserData(

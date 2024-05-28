@@ -20,7 +20,7 @@ class _DrawerChild extends StatelessWidget {
       children: [
         _DrawerSectionButton(
           path: MyAsset.home.path,
-          title: LangDrawer.homeSection.text,
+          title: const DrawerTextLang().home,
           onPressed: () {},
         ),
       ],

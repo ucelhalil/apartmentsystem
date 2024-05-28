@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:apartment_system/index.dart';
-import 'package:apptext/title.dart';
+import 'package:apptext/apptext.dart';
 import 'package:codeofland/codeofland.dart';
 import 'package:codeofwidget/codeofwidget.dart';
 import 'package:flutter/material.dart';
@@ -49,9 +49,9 @@ class _SplashViewState extends State<SplashView> with _SplashViewMixin {
                   width: size * textSize,
                   height: textHeight,
                   //
-                  child: const WBoldText(
+                  child: WBoldText(
                     textAlign: TextAlign.center,
-                    text: applicationTitle,
+                    text: const AppTextLang().materialTitle,
                     maxLines: 2,
                     wStyle: WTextStyle.headlineMedium,
                     overflow: TextOverflow.ellipsis,

@@ -1,1 +1,0 @@
-const applicationTitle = "Apartment System";

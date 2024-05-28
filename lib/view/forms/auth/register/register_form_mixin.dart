@@ -24,7 +24,7 @@ mixin RegisterFormMixin on State<RegisterForm> {
       return context.customShowDialog(
         dialog: CustomDialog(
           child: MyDialog.error(
-            message: LangFormError.isNotFormValidate.text,
+            message: const FormErrorTextLang().formValidation,
           ).build(),
         ),
       );
@@ -34,7 +34,7 @@ mixin RegisterFormMixin on State<RegisterForm> {
       return context.customShowDialog(
         dialog: CustomDialog(
           child: MyDialog.error(
-            message: LangFormError.isNotConfirmPassword.text,
+            message: const FormErrorTextLang().passwordMismatch,
           ).build(),
         ),
       );

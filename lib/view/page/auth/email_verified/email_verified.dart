@@ -1,4 +1,5 @@
 import 'package:apartment_system/index.dart';
+import 'package:apptext/apptext.dart';
 import 'package:codeofland/codeofland.dart';
 import 'package:codeofwidget/codeofwidget.dart';
 import 'package:flutter/material.dart';
@@ -27,7 +28,7 @@ class _EmailVerifiedViewState extends State<EmailVerifiedView>
         ),
         // ---------------------
         WText(
-          text: LangEmailVerified.emailVerified.text,
+          text: const FormErrorTextLang().emailVerified,
           wStyle: WTextStyle.headlineSmall,
         ),
         // ---------------------
@@ -38,12 +39,12 @@ class _EmailVerifiedViewState extends State<EmailVerifiedView>
               return const ConnectionWaiting();
             } else if (value == FutureType.error) {
               return WText(
-                text: LangEmailVerified.sendedFailedEmailVerified.text,
+                text: const FormErrorTextLang().sendedEmailFail,
                 wStyle: WTextStyle.headlineSmall,
               );
             } else {
               return WText(
-                text: LangEmailVerified.sendedEmailVerified.text,
+                text: const FormErrorTextLang().sendedEmail,
                 wStyle: WTextStyle.headlineSmall,
               );
             }
@@ -53,7 +54,7 @@ class _EmailVerifiedViewState extends State<EmailVerifiedView>
         CustomButton.small(
           onPressed: goToLogin,
           child: WText(
-            text: LangButton.goToLogin.text,
+            text: const ButtonTextLang().login,
           ),
         ),
       ],

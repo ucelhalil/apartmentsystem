@@ -1,4 +1,5 @@
 import 'package:apartment_system/index.dart';
+import 'package:apptext/apptext.dart';
 import 'package:codeofland/codeofland.dart';
 import 'package:codeofwidget/codeofwidget.dart';
 import 'package:flutter/material.dart';
@@ -32,29 +33,27 @@ class _LoginFormState extends State<LoginForm> with _LoginFormMixin {
           CustomButton.small(
             onPressed: submit,
             child: WText(
-              text: LangButton.goToLogin.text,
+              text: const ButtonTextLang().login,
             ),
           ),
           // ---------------------
           TextButton(
             onPressed: goToForgot,
             child: WText(
-              text: LangButton.goToForgot.text,
+              text: const ButtonTextLang().forgot,
               style: const TextStyle(decoration: TextDecoration.underline),
             ),
           ),
         ].spaceAroundRow,
         // ---------------------
-        // ---------------------
 
         TextButton(
           onPressed: goToRegister,
           child: WText(
-            text: LangButton.registerText.text,
+            text: const ButtonTextLang().registerText,
             style: const TextStyle(decoration: TextDecoration.underline),
           ),
         ),
-        // ---------------------
         // ---------------------
       ],
     );

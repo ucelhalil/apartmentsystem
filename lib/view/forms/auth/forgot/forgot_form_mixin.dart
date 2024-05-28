@@ -24,7 +24,7 @@ mixin ForgotFormMixin on State<ForgotForm> {
       return context.customShowDialog(
         dialog: CustomDialog(
           child: MyDialog.error(
-            message: LangForgotForm.isNotFormValidate.text,
+            message: const FormErrorTextLang().formValidation,
           ).build(),
         ),
       );

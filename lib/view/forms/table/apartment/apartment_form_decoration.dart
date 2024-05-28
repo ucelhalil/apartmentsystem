@@ -1,34 +1,36 @@
 part of 'apartment_form.dart';
 
 mixin _ApartmentFormDecoration on State<ApartmentForm> {
+  TBLApartmentTextLang get lang => const TBLApartmentTextLang();
+  //
   CustomFormDecoration get nameDecoration => CustomFormDecoration(
         context,
-        labelText: LangApartmentForm.labelApartmentName.text,
-        hintText: LangApartmentForm.hintApartmentName.text,
+        labelText: lang.name,
+        hintText: lang.nameHint,
       );
 
   CustomFormDecoration get addressDecoration => CustomFormDecoration(
         context,
-        labelText: LangApartmentForm.labelApartmentAddress.text,
-        hintText: LangApartmentForm.hintApartmentAddress.text,
+        labelText: lang.address,
+        hintText: lang.addressHint,
       );
 
   CustomFormDecoration get floorDecoration => CustomFormDecoration(
         context,
-        labelText: LangApartmentForm.labelApartmentFloor.text,
-        hintText: LangApartmentForm.hintApartmentFloor.text,
+        labelText: lang.floor,
+        hintText: lang.floorHint,
       );
 
   CustomFormDecoration get flatDecoration => CustomFormDecoration(
         context,
-        labelText: LangApartmentForm.labelApartmentFlats.text,
-        hintText: LangApartmentForm.hintApartmentFlats.text,
+        labelText: lang.flat,
+        hintText: lang.flatHint,
       );
 
   CustomFormDecoration dateDecoration(TextEditingController controller) =>
       CustomFormDecoration(context,
-          labelText: LangApartmentForm.labelApartmentDate.text,
-          hintText: LangApartmentForm.hintApartmentDate.text,
+          labelText: lang.buildDate,
+          hintText: lang.buildDateHint,
           prefixIcon: datePrefixIcon(controller));
 
   Widget datePrefixIcon(TextEditingController controller) {
@@ -44,8 +46,7 @@ mixin _ApartmentFormDecoration on State<ApartmentForm> {
   }
 
   String? floorValidator(String? value) {
-    if (!value.positiveIntParse) return LangFormError.isNotPositiveNumber.text;
-
+    if (!value.positiveIntParse) return const FormErrorTextLang().isPositive;
     return null;
   }
 
@@ -59,13 +60,13 @@ mixin _ApartmentFormDecoration on State<ApartmentForm> {
   // }
 
   String? flatValidator(String? value) {
-    if (!value.positiveIntParse) return LangFormError.isNotPositiveNumber.text;
+    if (!value.positiveIntParse) return const FormErrorTextLang().isPositive;
     return null;
   }
 
   String? dateValidator(String? value) {
-    if (value.isNullOrEmpty) return LangFormError.emptyField.text;
-    if (!value.dateTimeParse) return LangFormError.isNotValidDate.text;
+    if (value.isNullOrEmpty) return const FormErrorTextLang().required;
+    if (!value.dateTimeParse) return const FormErrorTextLang().isDateTime;
     return null;
   }
 }
