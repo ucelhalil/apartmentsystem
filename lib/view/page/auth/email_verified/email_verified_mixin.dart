@@ -1,6 +1,6 @@
 part of 'email_verified.dart';
 
-mixin EmailVericationMixin on State<EmailNotVerifiedView> {
+mixin EmailVericationMixin on State<EmailVerifiedView> {
   ValueNotifier<FutureType> isSended = ValueNotifier(FutureType.loading);
 
   @override
@@ -18,4 +18,5 @@ mixin EmailVericationMixin on State<EmailNotVerifiedView> {
     }
   }
 
+  goToLogin() => widget.notifier.toSignIn();
 }

@@ -1,4 +1,3 @@
-
 part of 'home_view.dart';
 
 class _HomeViewDrawer extends StatelessWidget {
@@ -19,24 +18,22 @@ class _DrawerChild extends StatelessWidget {
   Widget build(BuildContext context) {
     return ColumnWithSpacing(
       children: [
-          _DrawerSectionButton(
-            path: MyAsset.home.path,
-            title: homeSection,
-            onPressed: (){},
-          ),
+        _DrawerSectionButton(
+          path: MyAsset.home.path,
+          title: LangDrawer.homeSection.text,
+          onPressed: () {},
+        ),
       ],
     );
   }
 }
 
 class _DrawerSectionButton extends StatelessWidget {
-  const _DrawerSectionButton(
-    {
-      required this.title,
-      required this.onPressed,
-      required this.path,
-    }
-  );
+  const _DrawerSectionButton({
+    required this.title,
+    required this.onPressed,
+    required this.path,
+  });
 
   final String title;
 // Suggested code may be subject to a license. Learn more: ~LicenseLog:4179214195.

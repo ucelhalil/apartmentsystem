@@ -1,3 +1,4 @@
+export './firestore_count.dart';
 export './firestore_create.dart';
 export './firestore_delete.dart';
 export './firestore_read.dart';

@@ -11,6 +11,5 @@ final class AppRoute extends IRoute {
         MyRoute.splash.name: (_) => const SplashView(),
         MyRoute.auth.name: (_) => const AuthView(),
         MyRoute.home.name: (_) => const HomeView(),
-        MyRoute.emailNotVerified.name: (_) => const EmailNotVerifiedView(),
       };
 }

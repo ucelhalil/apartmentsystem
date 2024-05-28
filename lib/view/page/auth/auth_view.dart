@@ -38,6 +38,8 @@ class _AuthViewState extends State<AuthView> with _AuthViewMixin {
                   return RegisterForm(notifier: authNotifier);
                 case AuthType.forgot:
                   return ForgotForm(notifier: authNotifier);
+                case AuthType.verified:
+                  return EmailVerifiedView(notifier: authNotifier);
               }
             },
           ).withSizedBox(width: SizeType.hepta.size * 3),

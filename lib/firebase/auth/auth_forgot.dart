@@ -15,7 +15,10 @@ final class AuthForgot extends MyFirebaseAuth {
         hasEror: false,
       );
     } on FirebaseAuthException catch (e) {
-      return AuthErrorCode().getCode(e.code);
+      return AuthUserData.error(
+        message:
+            AppLang.firebaseException[e.code]?[langNotifier.value.name] ?? '',
+      );
     } catch (e) {
       return AuthUserData(
         user: null,

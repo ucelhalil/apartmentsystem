@@ -1,4 +1,4 @@
-import 'package:apptext/apptext.dart';
+import 'package:apartment_system/index.dart';
 import 'package:codeofland/codeofland.dart';
 
 extension TryParseStringExtension on String? {

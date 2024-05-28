@@ -24,7 +24,10 @@ final class AuthRegister extends MyFirebaseAuth {
         hasEror: false,
       );
     } on FirebaseAuthException catch (e) {
-      return AuthErrorCode().getCode(e.code);
+      return AuthUserData.error(
+        message:
+            AppLang.firebaseException[e.code]?[langNotifier.value.name] ?? '',
+      );
     } catch (e) {
       if (kDebugMode) debugPrint(e.toString());
       return AuthUserData(

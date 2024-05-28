@@ -1,6 +1,4 @@
-import 'package:apartment_system/firebase/firestore/firestore_count.dart';
 import 'package:apartment_system/index.dart';
-import 'package:apptext/apptext.dart';
 import 'package:codeofland/codeofland.dart';
 import 'package:codeofwidget/codeofwidget.dart';
 import 'package:flutter/material.dart';

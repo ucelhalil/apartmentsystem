@@ -16,10 +16,7 @@ class UserProfileView extends StatelessWidget {
           child: Card(
             child: [
               [
-                CircleAvatar(
-                  foregroundImage: NetworkImage(snapshot.data!.photoURL ?? ''),
-                  radius: SizeType.mega.size,
-                ),
+                UserAvatar(photoURL: snapshot.data?.photoURL),
                 // ------------------------
                 WText(text: 'UserName: ${snapshot.data!.displayName}'),
                 WText(text: 'Email: ${snapshot.data!.email}'),
@@ -31,6 +28,7 @@ class UserProfileView extends StatelessWidget {
                 WText(text: 'Flat: ${snapshot.data?.flat}'),
                 WText(text: 'End Date: ${snapshot.data?.planDate}'),
               ].centerColumn,
+
               // ------------------------
             ].column.withSizedBox(
                   height: SizeType.zeta.size,

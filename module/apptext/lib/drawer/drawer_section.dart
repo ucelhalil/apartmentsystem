@@ -1,1 +1,0 @@
-const homeSection = 'Home';

@@ -1,6 +1,4 @@
 import 'package:apartment_system/index.dart';
-import 'package:apptext/apptext.dart';
-
 import 'package:codeofland/codeofland.dart';
 import 'package:codeofwidget/codeofwidget.dart';
 import 'package:flutter/material.dart';
@@ -22,14 +20,14 @@ class _ApartmentCreatorState extends State<ApartmentCreator> {
         color: Colors.white,
         borderRadius: SizeType.ennea.size.radiusCircle,
       ),
-      child: const Column(
+      child: Column(
         children: [
           WBoldText(
-            text: apartmentCreator,
+            text: LangApartmentForm.apartmentCreator.text,
             wStyle: WTextStyle.headlineMedium,
           ),
-          Divider(),
-          ApartmentForm(),
+          const Divider(),
+          const ApartmentForm(),
         ],
       ),
     );

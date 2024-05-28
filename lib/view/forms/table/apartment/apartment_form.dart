@@ -1,5 +1,4 @@
 import 'package:apartment_system/index.dart';
-import 'package:apptext/apptext.dart';
 import 'package:codeofland/codeofland.dart';
 import 'package:codeofwidget/codeofwidget.dart';
 import 'package:flutter/material.dart';
@@ -28,7 +27,7 @@ class _ApartmentFormState extends State<ApartmentForm>
           controller: form.nameController,
           decoration: nameDecoration,
           forceField: true,
-          minimumValueLenght: fieldLegth,
+          minimumValueLenght: fieldLength,
           inputFormatters: [UpperCaseTextFormatter()],
         ),
         // --- Address ---
@@ -63,13 +62,13 @@ class _ApartmentFormState extends State<ApartmentForm>
         ),
         // --- Elevator ---
         RadioAnswerButton(
-          title: 'Apartman Asansörü Var mı?',
+          title: LangApartmentForm.haveAnElevator.text,
           boolNotifier: form.elevatorNotifier,
         ),
         // --- Save Button ---
         CustomButton(
           onPressed: () async => await submit(),
-          child: const WText(text: saveButton),
+          child: WText(text: LangButton.buttonSave.text),
         ),
       ],
     );

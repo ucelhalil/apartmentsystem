@@ -1,97 +1,62 @@
 import 'package:apartment_system/index.dart';
-import 'package:apptext/apptext.dart';
 import 'package:codeofland/codeofland.dart';
 import 'package:codeofwidget/codeofwidget.dart';
-// import 'package:apptext/apptext.dart';
-// import 'package:codeofland/codeofland.dart';
-// import 'package:codeofwidget/codeofwidget.dart';
 import 'package:flutter/material.dart';
 
 part 'email_verified_mixin.dart';
 
-class EmailNotVerifiedView extends StatefulWidget {
-  const EmailNotVerifiedView({super.key});
+class EmailVerifiedView extends StatefulWidget {
+  const EmailVerifiedView({super.key, required this.notifier});
+
+  final AuthNotifier notifier;
 
   @override
-  State<EmailNotVerifiedView> createState() => _EmailNotVerifiedViewState();
+  State<EmailVerifiedView> createState() => _EmailVerifiedViewState();
 }
 
-class _EmailNotVerifiedViewState extends State<EmailNotVerifiedView>  with EmailVericationMixin{
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: ValueListenableBuilder(valueListenable: isSended, builder: (context, value, child) {
-        switch (value) {
-          case FutureType.success:
-            return const _EmailSended();
-          case FutureType.error:
-            return const _EmailNotSended();
-          default: 
-            return const ConnectionWaiting().fittedBox().center();
-        }
-      },),
-    );
-    
-  }
-}
-
-class _EmailSended extends StatelessWidget {
-  const _EmailSended();
-
+class _EmailVerifiedViewState extends State<EmailVerifiedView>
+    with EmailVericationMixin {
   @override
   Widget build(BuildContext context) {
     return ColumnWithSpacing(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        WIconAsset(path: MyAsset.emailVerified.path,
-        size: SizeType.teta.size,
+        WIconAsset(
+          path: MyAsset.emailVerified.path,
+          size: SizeType.teta.size,
         ),
-        const WText(
-          text: emailNotVerified,
+        // ---------------------
+        WText(
+          text: LangEmailVerified.emailVerified.text,
           wStyle: WTextStyle.headlineSmall,
         ),
-        const WText(
-          text: sendedEmailVerified,
-          wStyle: WTextStyle.bodyLarge,
+        // ---------------------
+        ValueListenableBuilder(
+          valueListenable: isSended,
+          builder: (context, value, child) {
+            if (value == FutureType.loading) {
+              return const ConnectionWaiting();
+            } else if (value == FutureType.error) {
+              return WText(
+                text: LangEmailVerified.sendedFailedEmailVerified.text,
+                wStyle: WTextStyle.headlineSmall,
+              );
+            } else {
+              return WText(
+                text: LangEmailVerified.sendedEmailVerified.text,
+                wStyle: WTextStyle.headlineSmall,
+              );
+            }
+          },
         ),
+        // ---------------------
         CustomButton.small(
-          onPressed: () => context.pushNamed(MyRoute.auth.name),
-          child: const WText(
-            text: goToLoginButton,
+          onPressed: goToLogin,
+          child: WText(
+            text: LangButton.goToLogin.text,
           ),
         ),
       ],
     ).fittedBox().center();
   }
 }
-
-class _EmailNotSended extends StatelessWidget {
-  const _EmailNotSended();
-
-  @override
-  Widget build(BuildContext context) {
-    return ColumnWithSpacing(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        WIconAsset(path: MyAsset.emailVerified.path,
-        size: SizeType.teta.size,
-        ),
-        const WText(
-          text: emailNotVerified,
-          wStyle: WTextStyle.headlineSmall,
-        ),
-        const WText(
-          text: sendedFailedEmailVerified,
-          wStyle: WTextStyle.bodyLarge,
-        ),
-        CustomButton.small(
-          onPressed: () => context.pushNamed(MyRoute.auth.name),
-          child: const WText(
-            text: goToLoginButton,
-          ),
-        ),
-      ],
-    ).fittedBox().center();
-  }
-}
-

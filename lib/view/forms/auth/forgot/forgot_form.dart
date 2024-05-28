@@ -1,5 +1,4 @@
 import 'package:apartment_system/index.dart';
-import 'package:apptext/apptext.dart';
 import 'package:codeofwidget/codeofwidget.dart';
 import 'package:flutter/material.dart';
 
@@ -27,24 +26,24 @@ class _ForgotFormState extends State<ForgotForm> with ForgotFormMixin {
         // ---------------------
         CustomButton.small(
           onPressed: submit,
-          child: const WText(
-            text: sendButton,
+          child: WText(
+            text: LangButton.buttonSend.text,
           ),
         ),
         // ---------------------
         TextButton(
           onPressed: goToLogin,
-          child: const WText(
-            text: loginTextButton,
-            style: TextStyle(decoration: TextDecoration.underline),
+          child: WText(
+            text: LangButton.loginText.text,
+            style: const TextStyle(decoration: TextDecoration.underline),
           ),
         ),
         // ---------------------
         TextButton(
           onPressed: goToRegister,
-          child: const WText(
-            text: registerTextButton,
-            style: TextStyle(decoration: TextDecoration.underline),
+          child: WText(
+            text: LangButton.registerText.text,
+            style: const TextStyle(decoration: TextDecoration.underline),
           ),
         ),
 

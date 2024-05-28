@@ -20,4 +20,9 @@ final class AuthNotifier extends ValueNotifier<AuthType> {
     value = AuthType.forgot;
     notifyListeners();
   }
+
+  void toVerified() {
+    value = AuthType.verified;
+    notifyListeners();
+  }
 }

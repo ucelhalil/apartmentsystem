@@ -19,7 +19,7 @@ class _HomeViewBody extends StatelessWidget {
         ),
         UserProfileView(),
       ],
-    );
+    ).scrollVertical();
   }
 }
 

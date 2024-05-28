@@ -21,8 +21,8 @@ class _SplashViewState extends State<SplashView> with _SplashViewMixin {
     //
     return Scaffold(
       body: SizedBox(
-        width: context.sizeOf.width * 0.8,
-        height: context.sizeOf.height * 0.8,
+        width: context.sizeOf.width * 0.6,
+        height: context.sizeOf.height * 0.6,
         // ---  ---
         child: TweenAnimationBuilder(
           tween: tween,
@@ -50,7 +50,9 @@ class _SplashViewState extends State<SplashView> with _SplashViewMixin {
                   height: textHeight,
                   //
                   child: const WBoldText(
+                    textAlign: TextAlign.center,
                     text: applicationTitle,
+                    maxLines: 2,
                     wStyle: WTextStyle.headlineMedium,
                     overflow: TextOverflow.ellipsis,
                   ),

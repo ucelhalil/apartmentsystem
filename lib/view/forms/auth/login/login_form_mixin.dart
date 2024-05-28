@@ -23,7 +23,9 @@ mixin _LoginFormMixin on State<LoginForm> {
     if (!form.isValidate()) {
       return context.customShowDialog(
         dialog: CustomDialog(
-          child: MyDialog.error(message: isNotFormValidate).build(),
+          child: MyDialog.error(
+            message: LangFormError.isNotFormValidate.text,
+          ).build(),
         ),
       );
       //
@@ -61,7 +63,7 @@ mixin _LoginFormMixin on State<LoginForm> {
 
   void goToHome() => context.pushNamed(MyRoute.home.name);
 
-  void goToEmailVerified() => context.pushNamed(MyRoute.emailNotVerified.name);
+  void goToEmailVerified() => widget.notifier.toVerified();
 
   void goToForgot() => widget.notifier.toForgot();
 
