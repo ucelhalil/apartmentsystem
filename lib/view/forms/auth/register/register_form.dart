@@ -33,7 +33,7 @@ class _RegisterFormState extends State<RegisterForm> with RegisterFormMixin {
         CustomButton.small(
           onPressed: submit,
           child: WText(
-            text: const ButtonTextLang().registerText,
+            text: const ButtonTextLang().register,
           ),
         ),
         // ---------------------

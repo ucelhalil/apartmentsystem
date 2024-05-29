@@ -8,6 +8,7 @@ final class FirestoreWrite<T extends BaseDBModel> extends MyCloudFirestore<T> {
     try {
       // ------------------------------
       await userCollectionPath.doc(docData.uid).set(docData.toJson());
+
       // ------------------------------
       return FirestoreData(
         data: docData.toJson(),

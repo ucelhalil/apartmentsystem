@@ -21,63 +21,58 @@ mixin RegisterFormMixin on State<RegisterForm> {
 
   void submit() async {
     if (!form.isValidate()) {
-      return context.customShowDialog(
-        dialog: CustomDialog(
-          child: MyDialog.error(
-            message: const FormErrorTextLang().formValidation,
-          ).build(),
-        ),
-      );
+      return errorDialog(const FormErrorTextLang().formValidation);
     }
     // ---------------------
     if (!confirmPassword()) {
-      return context.customShowDialog(
-        dialog: CustomDialog(
-          child: MyDialog.error(
-            message: const FormErrorTextLang().passwordMismatch,
-          ).build(),
-        ),
-      );
+      return errorDialog(const FormErrorTextLang().passwordMismatch);
     }
     // ---------------------
-    final String email = form.emailController.text;
-    final String password = form.passwordController.text;
+    AuthUserData? response;
     // ---------------------
-    final response = await fireRegister.createUserWithEmailAndPassword(
-      email,
-      password,
-    );
+    try {
+      response = await fireRegister.createUserWithEmailAndPassword(
+        form.emailController.text,
+        form.passwordController.text,
+      );
+    } catch (e) {
+      return errorDialog(e.toString());
+    }
+
     // ---------------------
     if (!context.mounted) return;
     // ---------------------
     if (response.hasEror || response.user == null) {
-      // ignore: use_build_context_synchronously
-      return context.customShowDialog(
-        dialog: CustomDialog(
-          child: MyDialog.error(message: response.message ?? '').build(),
-        ),
-      );
+      return errorDialog(response.message ?? '');
     }
 
     if (response.user!.emailVerified == false) {
-      // ignore: use_build_context_synchronously
-      // await response.user!.sendEmailVerification();
       return goToEmailVerified();
     }
     // ---------------------
-    goToHome();
+    goToLogin();
   }
 
   void goToLogin() => widget.notifier.toSignIn();
 
   void goToHome() => context.pushNamed(MyRoute.home.name);
 
-  void goToEmailVerified() => context.pushNamed(MyRoute.emailNotVerified.name);
+  void goToEmailVerified() => widget.notifier.toVerified();
 
   bool confirmPassword() {
     if (form.passwordController.text != form.confirmController.text) {
       return false;
     }
     return true;
+  }
+
+  Future<T> errorDialog<T>(String code) async {
+    return await context.customShowDialog(
+      dialog: CustomDialog(
+        child: MyDialog.error(
+          message: code,
+        ).build(),
+      ),
+    );
   }
 }

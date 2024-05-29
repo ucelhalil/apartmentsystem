@@ -21,34 +21,24 @@ mixin _LoginFormMixin on State<LoginForm> {
 
   void submit() async {
     if (!form.isValidate()) {
-      return context.customShowDialog(
-        dialog: CustomDialog(
-          child: MyDialog.error(
-            message: const FormErrorTextLang().formValidation,
-          ).build(),
-        ),
-      );
-      //
+      return errorDialog(const FormErrorTextLang().formValidation);
     }
     //
-    final String email = form.emailController.text;
-    final String password = form.passwordController.text;
+    AuthUserData? response;
     //
-    final response = await fireLogin.signInWithEmailAndPassword(
-      email,
-      password,
-    );
-    //
-
+    try {
+      response = await fireLogin.signInWithEmailAndPassword(
+        form.emailController.text,
+        form.passwordController.text,
+      );
+    } catch (e) {
+      return errorDialog(e.toString());
+    }
     if (!context.mounted) return;
     //
     if (response.hasEror || response.user == null) {
       // ignore: use_build_context_synchronously
-      return context.customShowDialog(
-        dialog: CustomDialog(
-          child: MyDialog.error(message: response.message ?? '').build(),
-        ),
-      );
+      return errorDialog(response.message ?? '');
     }
 
     if (response.user!.emailVerified == false) {
@@ -68,4 +58,14 @@ mixin _LoginFormMixin on State<LoginForm> {
   void goToForgot() => widget.notifier.toForgot();
 
   void goToRegister() => widget.notifier.toSignUp();
+
+  Future<T> errorDialog<T>(String code) async {
+    return await context.customShowDialog(
+      dialog: CustomDialog(
+        child: MyDialog.error(
+          message: 'Beklenmeyen bir hata oluştu. : $code',
+        ).build(),
+      ),
+    );
+  }
 }

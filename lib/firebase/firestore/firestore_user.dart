@@ -32,9 +32,9 @@ final class FirestoreUser extends MyCloudFirestore {
         theme: true,
         planDate: DateTime.now().add(const Duration(days: 365)),
       );
-
+      //
       await authUserPath.set(user.toJson());
-      AuthUser.of.setFireUser = user;
+      //
       return true;
     } catch (e) {
       if (kDebugMode) debugPrint('FirestoreUser.create: $e');

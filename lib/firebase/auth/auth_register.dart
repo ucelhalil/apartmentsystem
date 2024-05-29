@@ -17,12 +17,12 @@ final class AuthRegister extends MyFirebaseAuth {
         password: password,
       );
       // ---------------------
-      await FirestoreUser.of.create(userCredential);
+      final createSuccess = await FirestoreUser.of.create(userCredential);
       // ---------------------
       return AuthUserData(
         user: userCredential.user,
-        message: 'Kayıt başarılı.',
-        hasEror: false,
+        message: 'Kullanıcı Verisi Yaratılamadı',
+        hasEror: !createSuccess,
       );
     } on FirebaseAuthException catch (e) {
       return AuthUserData.error(
@@ -30,11 +30,7 @@ final class AuthRegister extends MyFirebaseAuth {
       );
     } catch (e) {
       if (kDebugMode) debugPrint(e.toString());
-      return AuthUserData(
-        user: null,
-        message: 'Beklenmeyen bir hata oluştu.',
-        hasEror: true,
-      );
+      return AuthUserData.error(message: 'Beklenmeyen bir hata oluştu.');
     }
   }
 }

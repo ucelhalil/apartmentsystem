@@ -21,9 +21,14 @@ class _AuthViewState extends State<AuthView> with _AuthViewMixin {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           // ---------------------
-          WIconAsset(
-            path: MyAsset.login.path,
-            size: SizeType.hepta.size,
+          ValueListenableBuilder(
+            valueListenable: authNotifier,
+            builder: (context, value, child) {
+              return WIconAsset(
+                path: MyAsset.login.path,
+                size: SizeType.hepta.size,
+              ).isVisibility(visible: value != AuthType.verified);
+            },
           ),
           // ---------------------
           // ---------------------

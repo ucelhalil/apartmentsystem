@@ -28,7 +28,6 @@ class _LoginFormState extends State<LoginForm> with _LoginFormMixin {
         // ---------------------
         PasswordFormField(controller: form.passwordController),
         // ---------------------
-        // ---------------------
         [
           CustomButton.small(
             onPressed: submit,

@@ -16,9 +16,10 @@ final class AuthLogin extends MyFirebaseAuth {
         email: mail,
         password: pass,
       );
+
       return AuthUserData(
         user: userCredential.user,
-        message: 'Giriş başarılı.',
+        message: null,
         hasEror: false,
       );
     } on FirebaseAuthException catch (e) {

@@ -35,8 +35,8 @@ class _ConfirmPasswordFormFieldState extends State<ConfirmPasswordFormField>
 
   CustomFormDecoration get decoration => CustomFormDecoration(
         context,
-        hintText: const FormTextLang().confirm,
-        labelText: const FormTextLang().confirmHint,
+        hintText: const FormTextLang().confirmHint,
+        labelText: const FormTextLang().confirm,
         suffixIcon: suffixIcon(),
         prefixIcon: prefixIcon(),
       );
