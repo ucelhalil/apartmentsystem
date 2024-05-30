@@ -9,14 +9,17 @@ class _HomeViewBody extends StatelessWidget {
       spacing: SizeType.ennea.size,
       runSpacing: SizeType.ennea.size,
       children: const [
+        // ------------------------
         _ActiveTCount<TBLApartment>(
           title: 'Apartment',
           asset: MyAsset.apartment,
         ),
+        // ------------------------
         _ActiveTCount<TBLFlats>(
           title: 'Flats',
           asset: MyAsset.home,
         ),
+        // ------------------------
         UserProfileView(),
       ],
     ).scrollVertical();
@@ -55,5 +58,44 @@ class _ActiveTCount<T extends BaseDBModel> extends StatelessWidget {
         );
       },
     );
+  }
+}
+
+List<TBLIncome> _incomeList = [];
+
+class _IncomeTotal extends StatelessWidget {
+  const _IncomeTotal();
+
+  @override
+  Widget build(BuildContext context) {
+    if (_incomeList.isEmpty) {
+      FirestoreRead<TBLIncome>().collection().then((value) {
+        if (value.hasError) {
+          return SnapshotHasErrorWidget(error: value.message ?? '');
+        }
+        // ------------------------
+        value.data.map((e) {
+          if (!e.hasError) {
+            _incomeList.add(TBLIncome.fromJson(e.data));
+          }
+        });
+        // ------------------------
+      });
+
+      return _IncomeCard(_incomeList);
+    } else {
+      return _IncomeCard(_incomeList);
+    }
+  }
+}
+
+class _IncomeCard extends StatelessWidget {
+  const _IncomeCard(this.incomeList);
+
+  final List<TBLIncome> incomeList;
+
+  @override
+  Widget build(BuildContext context) {
+    return const Placeholder();
   }
 }

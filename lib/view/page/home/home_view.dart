@@ -37,15 +37,10 @@ mixin _HomeViewMixin on State<HomeView> {
   @override
   void initState() {
     super.initState();
-    user;
   }
 
   @override
   void dispose() {
     super.dispose();
-  }
-
-  Future<void> get user async {
-    await AuthUser.of.getUserData();
   }
 }

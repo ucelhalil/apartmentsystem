@@ -19,6 +19,15 @@ final class FirestoreUser extends MyCloudFirestore {
     }
   }
 
+  Stream<FireUser> get fireUser => authUserPath.snapshots().map(
+        (event) {
+          if (event.exists && event.data() != null) {
+            return FireUser.fromJson(event.data()!);
+          }
+          throw FirestoreException('User Exception', 'Veri getirilemedi');
+        },
+      );
+
   Future<bool> create(UserCredential credential) async {
     try {
       FireUser user = FireUser(
