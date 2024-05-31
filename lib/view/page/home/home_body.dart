@@ -20,9 +20,43 @@ class _HomeViewBody extends StatelessWidget {
           asset: MyAsset.home,
         ),
         // ------------------------
+
         UserProfileView(),
       ],
     ).scrollVertical();
+  }
+}
+
+class _IncomeTotal extends StatelessWidget {
+  const _IncomeTotal();
+
+  @override
+  Widget build(BuildContext context) {
+    if (FutureOption.of.tblIncome != null &&
+        FutureOption.of.tblIncome!.controlData()) {
+      return _IncomeListCard(FutureOption.of.tblIncome!.data);
+    }
+
+    return FutureBuilder(
+        future: FirestoreRead().collection(),
+        builder: (context, snapshot) {
+          return Container();
+        });
+  }
+}
+
+class _IncomeListCard extends StatelessWidget {
+  const _IncomeListCard(this.incomeList);
+
+  final List<TBLIncome> incomeList;
+
+  @override
+  Widget build(BuildContext context) {
+    return const Card(
+      child: Column(
+        children: [],
+      ),
+    );
   }
 }
 
@@ -58,44 +92,5 @@ class _ActiveTCount<T extends BaseDBModel> extends StatelessWidget {
         );
       },
     );
-  }
-}
-
-List<TBLIncome> _incomeList = [];
-
-class _IncomeTotal extends StatelessWidget {
-  const _IncomeTotal();
-
-  @override
-  Widget build(BuildContext context) {
-    if (_incomeList.isEmpty) {
-      FirestoreRead<TBLIncome>().collection().then((value) {
-        if (value.hasError) {
-          return SnapshotHasErrorWidget(error: value.message ?? '');
-        }
-        // ------------------------
-        value.data.map((e) {
-          if (!e.hasError) {
-            _incomeList.add(TBLIncome.fromJson(e.data));
-          }
-        });
-        // ------------------------
-      });
-
-      return _IncomeCard(_incomeList);
-    } else {
-      return _IncomeCard(_incomeList);
-    }
-  }
-}
-
-class _IncomeCard extends StatelessWidget {
-  const _IncomeCard(this.incomeList);
-
-  final List<TBLIncome> incomeList;
-
-  @override
-  Widget build(BuildContext context) {
-    return const Placeholder();
   }
 }

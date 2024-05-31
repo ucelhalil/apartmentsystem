@@ -17,14 +17,14 @@ class ApartmentList extends StatelessWidget {
         if (snapshot.hasError) {
           return SnapshotHasErrorWidget(error: snapshot.error.toString());
         }
+        // TODO:
+        // if (snapshot.hasData && snapshot.data!.hasError) {
+        //   return SnapshotHasNotDataWidget(error: snapshot.data!.message ?? '');
+        // }
 
-        if (snapshot.hasData && snapshot.data!.hasError) {
-          return SnapshotHasNotDataWidget(error: snapshot.data!.message ?? '');
-        }
-
-        if (snapshot.connectionState == ConnectionState.done) {
-          return ApartmentListWidget(list: snapshot.data!.data);
-        }
+        // if (snapshot.connectionState == ConnectionState.done) {
+        //   return ApartmentListWidget(list: snapshot.data!.data);
+        // }
 
         return const ConnectionWaiting();
       },

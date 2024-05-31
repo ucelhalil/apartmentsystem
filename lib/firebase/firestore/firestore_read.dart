@@ -23,30 +23,18 @@ final class FirestoreRead<T extends BaseDBModel> extends MyCloudFirestore<T> {
     }
   }
 
-  Future<FirestoreListData> collection() async {
+  Future<List<T>> collection() async {
     try {
       final snapshot = await userCollectionPath.get();
-
+      // ------------------------
       if (snapshot.docs.isEmpty) {
-        return FirestoreListData.empty(message: 'No data found');
+        throw FirestoreException('data-isempty', 'Data is empty');
       }
-      return FirestoreListData(
-        data: snapshot.docs
-            .map(
-              (e) => FirestoreData(
-                data: e.data(),
-                uid: e.id,
-                message: e.exists ? 'Success' : 'Failed',
-                hasError: !e.exists,
-              ),
-            )
-            .toList(),
-        message: 'Success',
-        hasError: false,
-      );
+      // TODO: Convert snapshot.docs to List<T>
+      return [];
     } catch (e) {
       if (kDebugMode) debugPrint('FirestoreRead.collection: $e');
-      return FirestoreListData.empty(message: e.toString());
+      throw FirestoreException('data-error', e.toString());
     }
   }
 }
