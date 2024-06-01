@@ -1,4 +1,4 @@
-export 'fire_user.dart';
+export 'tbl_user.dart';
 export 'tbl_announcement.dart';
 export 'tbl_apartment.dart';
 export 'tbl_base_report.dart';

@@ -38,7 +38,7 @@ class _IncomeTotal extends StatelessWidget {
     }
 
     return FutureBuilder(
-        future: FirestoreRead().collection(),
+        future: FirestoreRead<TBLIncome>().getCollectionWithoudDeleted(),
         builder: (context, snapshot) {
           return Container();
         });
@@ -72,7 +72,7 @@ class _ActiveTCount<T extends BaseDBModel> extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(
-      future: FirestoreCount<T>().count(),
+      future: FirestoreCount<T>().getCount(),
       builder: (context, snapshot) {
         // ------------------------
         return SnapshotViewController<int>(

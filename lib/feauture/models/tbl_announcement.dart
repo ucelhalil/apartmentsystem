@@ -1,6 +1,7 @@
 import 'dart:convert';
 
-import 'package:apartment_system/index.dart';
+
+import 'package:firebase/firebase.dart';
 
 final class TBLAnnouncement extends BaseDBModel<TBLAnnouncement> {
   final String? id;

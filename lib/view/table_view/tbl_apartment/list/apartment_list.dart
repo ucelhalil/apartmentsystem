@@ -1,6 +1,7 @@
 import 'package:apartment_system/index.dart';
 import 'package:codeofland/codeofland.dart';
 import 'package:codeofwidget/codeofwidget.dart';
+import 'package:firebase/firebase.dart';
 import 'package:flutter/material.dart';
 
 part 'apartment_list_widget.dart';
@@ -12,7 +13,7 @@ class ApartmentList extends StatelessWidget {
   Widget build(BuildContext context) {
     // ------------------------
     return FutureBuilder(
-      future: FirestoreRead<TBLApartment>().collection(),
+      future: FirestoreRead<TBLApartment>().getCollectionWithoudDeleted(),
       builder: (context, snapshot) {
         if (snapshot.hasError) {
           return SnapshotHasErrorWidget(error: snapshot.error.toString());

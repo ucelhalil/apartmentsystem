@@ -11,7 +11,7 @@ mixin EmailVericationMixin on State<EmailVerifiedView> {
 
   Future<void> sendVerification() async {
     try {
-      await AuthUser.of.sendEmailVerification();
+      await FireUser.of.sendVerification();
       isSended.value = FutureType.success;
     } catch (e) {
       isSended.value = FutureType.error;

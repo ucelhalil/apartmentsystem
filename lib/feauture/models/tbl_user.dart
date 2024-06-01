@@ -1,6 +1,7 @@
-import 'package:apartment_system/index.dart';
 
-final class FireUser extends BaseDBModel<FireUser> {
+import 'package:firebase/firebase.dart';
+
+final class TBLUser extends BaseDBModel<TBLUser> {
   final String? displayName;
   final String? email;
   final String? photoURL;
@@ -12,7 +13,7 @@ final class FireUser extends BaseDBModel<FireUser> {
   final int? apartment;
   final int? flat;
 
-  FireUser({
+  TBLUser({
     this.displayName,
     this.email,
     this.photoURL,
@@ -35,7 +36,7 @@ final class FireUser extends BaseDBModel<FireUser> {
   });
 
   @override
-  FireUser copyWith({
+  TBLUser copyWith({
     String? displayName,
     String? email,
     String? photoURL,
@@ -56,7 +57,7 @@ final class FireUser extends BaseDBModel<FireUser> {
     bool? isActive,
     bool? isFavorite,
   }) {
-    return FireUser(
+    return TBLUser(
       displayName: displayName ?? this.displayName,
       email: email ?? this.email,
       photoURL: photoURL ?? this.photoURL,
@@ -80,8 +81,8 @@ final class FireUser extends BaseDBModel<FireUser> {
   }
 
   @override
-  FireUser fromJson(Map<String, dynamic> json) {
-    return FireUser(
+  TBLUser fromJson(Map<String, dynamic> json) {
+    return TBLUser(
       displayName: json['displayName'],
       email: json['email'],
       photoURL: json['photoURL'],
@@ -116,8 +117,8 @@ final class FireUser extends BaseDBModel<FireUser> {
     );
   }
 
-  factory FireUser.fromJson(Map<String, dynamic> json) {
-    return FireUser(
+  factory TBLUser.fromJson(Map<String, dynamic> json) {
+    return TBLUser(
       displayName: json['displayName'],
       email: json['email'],
       photoURL: json['photoURL'],
@@ -201,156 +202,3 @@ final class FireUser extends BaseDBModel<FireUser> {
   }
 }
 
-
-
-// import 'dart:convert';
-
-// import 'base_db_model.dart';
-
-// final class TBLUser extends BaseDBModel<TBLUser> {
-//   final String? email;
-//   final String? displayName;
-//   final String? photoURL;
-//   final String? role;
-//   final String? plans;
-//   final List<String>? sharedUid;
-
-//   TBLUser({
-//     super.uid,
-//     this.email,
-//     this.displayName,
-//     this.photoURL,
-//     this.sharedUid,
-//     this.role,
-//     this.plans,
-//     super.createdBy,
-//     super.createdDate,
-//     super.updatedBy,
-//     super.updatedDate,
-//     super.deletedBy,
-//     super.deletedDate,
-//     super.isActive,
-//     super.isDeleted,
-//   });
-
-//   @override
-//   TBLUser copyWith({
-//     String? uid,
-//     String? email,
-//     String? displayName,
-//     String? photoURL,
-//     String? role,
-//     String? plans,
-//     List<String>? sharedUid,
-//     String? createdBy,
-//     DateTime? createdDate,
-//     String? updatedBy,
-//     DateTime? updatedDate,
-//     String? deletedBy,
-//     DateTime? deletedDate,
-//     bool? isActive,
-//     bool? isDeleted,
-//   }) {
-//     return TBLUser(
-//       uid: uid ?? this.uid,
-//       email: email ?? this.email,
-//       displayName: displayName ?? this.displayName,
-//       photoURL: photoURL ?? this.photoURL,
-//       role: role ?? this.role,
-//       plans: plans ?? this.plans,
-//       sharedUid: sharedUid ?? this.sharedUid,
-//       createdBy: createdBy ?? this.createdBy,
-//       createdDate: createdDate ?? this.createdDate,
-//       updatedBy: updatedBy ?? this.updatedBy,
-//       updatedDate: updatedDate ?? this.updatedDate,
-//       deletedBy: deletedBy ?? this.deletedBy,
-//       deletedDate: deletedDate ?? this.deletedDate,
-//       isActive: isActive ?? this.isActive,
-//       isDeleted: isDeleted ?? this.isDeleted,
-//     );
-//   }
-
-//   factory TBLUser.fromJson(Map<String, dynamic> json) {
-//     return TBLUser(
-//       uid: json['uid'],
-//       email: json['email'],
-//       displayName: json['displayName'],
-//       photoURL: json['photoURL'],
-//       role: json['role'],
-//       plans: json['plans'],
-//       sharedUid: jsonDecode(json['sharedUid']),
-//       createdBy: json['createdBy'],
-//       createdDate: DateTime.tryParse(json['createdDate']),
-//       updatedBy: json['updatedBy'],
-//       updatedDate: DateTime.tryParse(json['updatedDate']),
-//       deletedBy: json['deletedBy'],
-//       deletedDate: DateTime.tryParse(json['deletedDate']),
-//       isActive: bool.tryParse(json['isActive']),
-//       isDeleted: bool.tryParse(json['isDeleted']),
-//     );
-//   }
-
-//   @override
-//   TBLUser fromJson(Map<String, dynamic> json) {
-//     return TBLUser(
-//       uid: json['uid'],
-//       email: json['email'],
-//       displayName: json['displayName'],
-//       photoURL: json['photoURL'],
-//       role: json['role'],
-//       plans: json['plans'],
-//       sharedUid: jsonDecode(json['sharedUid']),
-//       createdBy: json['createdBy'],
-//       createdDate: DateTime.tryParse(json['createdDate']),
-//       updatedBy: json['updatedBy'],
-//       updatedDate: DateTime.tryParse(json['updatedDate']),
-//       deletedBy: json['deletedBy'],
-//       deletedDate: DateTime.tryParse(json['deletedDate']),
-//       isActive: bool.tryParse(json['isActive']),
-//       isDeleted: bool.tryParse(json['isDeleted']),
-//     );
-//   }
-
-//   @override
-//   List<Object?> get props => [
-//         uid,
-//         email,
-//         displayName,
-//         photoURL,
-//         role,
-//         plans,
-//         sharedUid,
-//         createdBy,
-//         createdDate,
-//         updatedBy,
-//         updatedDate,
-//         deletedBy,
-//         deletedDate,
-//         isActive,
-//         isDeleted,
-//       ];
-
-//   @override
-//   bool? get stringify => true;
-
-//   @override
-//   Map<String, dynamic> toJson() {
-//     return {
-//       'uid': uid,
-//       'email': email,
-//       'displayName': displayName,
-//       'photoURL': photoURL,
-//       'role': role,
-//       'plans': plans,
-//       'sharedUid': jsonEncode(sharedUid),
-//       'createdBy': createdBy,
-//       'createdDate': createdDate?.toIso8601String(),
-//       'updatedBy': updatedBy,
-//       'updatedDate': updatedDate?.toIso8601String(),
-//       'deletedBy': deletedBy,
-//       'deletedDate': deletedDate?.toIso8601String(),
-//       'isActive': isActive?.toString(),
-//       'isDeleted': isDeleted?.toString(),
-//     };
-//   }
-// }

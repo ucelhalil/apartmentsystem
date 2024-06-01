@@ -1,4 +1,5 @@
-import 'package:apartment_system/index.dart';
+
+import 'package:firebase/firebase.dart';
 
 final class TBLSupscription extends BaseDBModel<TBLSupscription> {
   final String? id;

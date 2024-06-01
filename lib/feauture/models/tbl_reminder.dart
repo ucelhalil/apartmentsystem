@@ -1,4 +1,5 @@
-import 'package:apartment_system/index.dart';
+
+import 'package:firebase/firebase.dart';
 import 'package:flutter/material.dart';
 
 final class TBLReminder extends BaseDBModel<TBLReminder> {

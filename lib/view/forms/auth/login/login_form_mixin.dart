@@ -3,7 +3,7 @@ part of 'login_form.dart';
 mixin _LoginFormMixin on State<LoginForm> {
   late ScrollController scrollController;
   late LoginFormController form;
-  AuthLogin fireLogin = AuthLogin.of;
+  FireUserLogin fireLogin = FireUserLogin.of;
 
   @override
   void initState() {
@@ -24,31 +24,18 @@ mixin _LoginFormMixin on State<LoginForm> {
       return errorDialog(const FormErrorTextLang().formValidation);
     }
     //
-    AuthUserData? response;
-    //
     try {
-      response = await fireLogin.signInWithEmailAndPassword(
+      await fireLogin.signInWithEmail(
         form.emailController.text,
         form.passwordController.text,
       );
     } catch (e) {
       return errorDialog(e.toString());
     }
-    if (!context.mounted) return;
-    //
-    if (response.hasEror || response.user == null) {
-      // ignore: use_build_context_synchronously
-      return errorDialog(response.message ?? '');
+    if( FireUser.of.currentUser?.emailVerified ?? false) {
+      return goToHome();
     }
-
-    if (response.user!.emailVerified == false) {
-      // ignore: use_build_context_synchronously
-      // await response.user!.sendEmailVerification();
-      return goToEmailVerified();
-    }
-
-    //
-    goToHome();
+    return goToEmailVerified();
   }
 
   void goToHome() => context.pushNamed(MyRoute.home.name);

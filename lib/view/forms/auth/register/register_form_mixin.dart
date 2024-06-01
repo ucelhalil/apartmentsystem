@@ -3,7 +3,7 @@ part of 'register_form.dart';
 mixin RegisterFormMixin on State<RegisterForm> {
   late ScrollController scrollController;
   late RegisterFormController form;
-  AuthRegister fireRegister = AuthRegister.of;
+  FireUserRegister fireRegister = FireUserRegister.of;
 
   @override
   void initState() {
@@ -28,29 +28,20 @@ mixin RegisterFormMixin on State<RegisterForm> {
       return errorDialog(const FormErrorTextLang().passwordMismatch);
     }
     // ---------------------
-    AuthUserData? response;
-    // ---------------------
     try {
-      response = await fireRegister.createUserWithEmailAndPassword(
-        form.emailController.text,
-        form.passwordController.text,
+      await fireRegister.createWithEmailAndPassword(
+        email:form.emailController.text,
+        password:form.passwordController.text,
       );
     } catch (e) {
       return errorDialog(e.toString());
     }
-
     // ---------------------
-    if (!context.mounted) return;
-    // ---------------------
-    if (response.hasEror || response.user == null) {
-      return errorDialog(response.message ?? '');
-    }
-
-    if (response.user!.emailVerified == false) {
+    if (FireUser.of.currentUser?.emailVerified == false) {
       return goToEmailVerified();
     }
     // ---------------------
-    goToLogin();
+    return goToLogin();
   }
 
   void goToLogin() => widget.notifier.toSignIn();

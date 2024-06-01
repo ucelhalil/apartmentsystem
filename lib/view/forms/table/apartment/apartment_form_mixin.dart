@@ -22,23 +22,13 @@ mixin _ApartmentFormMixin on State<ApartmentForm> {
 
   Future<void> submit() async {
     if (!form.isValidate()) return;
-
-    final uid = fireStoreWrite.newDocumentId;
-
-    if (uid.isNullOrEmpty) {
-      // ignore: use_build_context_synchronously
-      return context.customShowDialog(
-        dialog: CustomDialog(
-          child: MyDialog.error(message: 'UID oluşturulamadı').build(),
-        ),
-      );
-    }
-
     // --- Apartment ---
+    final uid = fireStoreWrite.docUid;
+    //
     final apartment = TBLApartment(
       uid: uid,
       isActive: true,
-      createdBy: AuthUser.of.currentUser?.email,
+      createdBy: FireUser.of.currentUser?.email,
       createdDate: DateTime.now(),
       // ---  ---
       name: form.nameValue,
@@ -49,23 +39,25 @@ mixin _ApartmentFormMixin on State<ApartmentForm> {
       haveElevator: form.elevatorNotifier.value,
     );
     // --- Add Apartment ---
-    final response = await fireStoreWrite.add(docData: apartment);
-    // --- Show Message ---
-    if (!context.mounted) return;
-    // ---  ---
-    if (response.hasError) {
-      // ignore: use_build_context_synchronously
-      return context.customShowDialog(
-        dialog: CustomDialog(
-          child: MyDialog.error(message: response.message ?? '').build(),
-        ),
-      );
+    try {
+      await fireStoreWrite.create(uid,  apartment.toJson());
+    } catch (e) {
+      return errorDialog(e.toString());
     }
-
     // ignore: use_build_context_synchronously
     return context.customShowDialog(
       dialog: CustomDialog(
         child: MyDialog.success(message: 'Apartman Eklendi').build(),
+      ),
+    );
+  }
+
+    Future<T> errorDialog<T>(String code) async {
+    return await context.customShowDialog(
+      dialog: CustomDialog(
+        child: MyDialog.error(
+          message: code,
+        ).build(),
       ),
     );
   }

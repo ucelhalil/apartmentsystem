@@ -1,4 +1,6 @@
+
 import 'package:apartment_system/index.dart';
+import 'package:firebase/firebase.dart';
 
 final class TBLOwner extends BaseDBModel<TBLOwner> {
   final String? id;

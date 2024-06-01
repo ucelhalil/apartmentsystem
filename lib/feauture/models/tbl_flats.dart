@@ -1,4 +1,5 @@
-import 'package:apartment_system/index.dart';
+
+import 'package:firebase/firebase.dart';
 
 final class TBLFlats extends BaseDBModel<TBLFlats> {
   final String? id;

@@ -1,4 +1,5 @@
-import 'package:apartment_system/index.dart';
+
+import 'package:firebase/firebase.dart';
 
 final class TBLExpense extends BaseDBModel<TBLExpense> {
   final String? id;

@@ -1,6 +1,7 @@
 import 'package:apartment_system/index.dart';
 import 'package:codeofland/codeofland.dart';
 import 'package:codeofwidget/codeofwidget.dart';
+import 'package:firebase/firebase.dart';
 import 'package:flutter/material.dart';
 
 class UserProfileView extends StatelessWidget {
@@ -9,7 +10,7 @@ class UserProfileView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return StreamBuilder(
-      stream: FirestoreUser.of.fireUser,
+      stream: FireUserData().getUserDoc(),
       builder: (context, snapshot) {
         // ------------------------
         if (snapshot.connectionState == ConnectionState.waiting) {
@@ -20,11 +21,12 @@ class UserProfileView extends StatelessWidget {
           return SnapshotHasErrorWidget(error: snapshot.error.toString());
         }
         // ------------------------
-        if (snapshot.hasData && snapshot.data == null) {
+        if (snapshot.hasData && snapshot.data == null && snapshot.data!.data() == null) {
           return SnapshotHasNotDataWidget(error: snapshot.error.toString());
         }
         // ------------------------
-        return _ProfileCard(user: snapshot.data!);
+        TBLUser user = TBLUser.fromJson(snapshot.data!.data()!);
+        return _ProfileCard(user: user);
       },
     );
   }
@@ -33,7 +35,7 @@ class UserProfileView extends StatelessWidget {
 class _ProfileCard extends StatelessWidget {
   const _ProfileCard({required this.user});
 
-  final FireUser user;
+  final TBLUser user;
 
   @override
   Widget build(BuildContext context) {
