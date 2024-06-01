@@ -19,7 +19,7 @@ final class LightTheme extends ITheme {
   @override
   ElevatedButtonThemeData get elevatedButton => ElevatedButtonThemeData(
         style: ButtonStyle(
-          foregroundColor: MaterialStatePropertyAll(_scheme.primary),
+          foregroundColor: WidgetStatePropertyAll(_scheme.primary),
         ),
       );
 

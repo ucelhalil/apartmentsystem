@@ -4,6 +4,7 @@ import 'package:apartment_system/index.dart';
 import 'package:apptext/apptext.dart';
 import 'package:codeofland/codeofland.dart';
 import 'package:codeofwidget/codeofwidget.dart';
+import 'package:feautures/feautures.dart';
 import 'package:flutter/material.dart';
 
 part 'splash_mixin.dart';

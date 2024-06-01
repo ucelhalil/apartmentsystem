@@ -1,9 +1,13 @@
-import 'package:apartment_system/index.dart';
-import 'package:codeofland/codeofland.dart';
+
 
 extension TryParseStringExtension on String? {
+  bool get nullOrEmpty =>   this == null || this!.isEmpty;
+
+  DateTime get minimumDate  => DateTime(1950,1,1);
+  DateTime get maximumDate  => DateTime.now();
+
   bool get dateTimeParse {
-    if (isNullOrEmpty) return false;
+    if (nullOrEmpty) return false;
 
     if (DateTime.tryParse(this!) == null) return false;
 

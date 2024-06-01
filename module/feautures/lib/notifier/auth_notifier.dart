@@ -1,4 +1,5 @@
-import 'package:apartment_system/index.dart';
+
+import 'package:feautures/feautures.dart';
 import 'package:flutter/material.dart';
 
 final class AuthNotifier extends ValueNotifier<AuthType> {
