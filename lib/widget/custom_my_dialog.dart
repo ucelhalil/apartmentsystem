@@ -54,7 +54,10 @@ class CustomMyDialog extends StatelessWidget {
           size: 64,
           color: Colors.red,
         ),
-        WText(text: message),
+        WText(
+          text: message,
+          textAlign: TextAlign.center,
+        ),
       ].spaceAroundColumn,
     );
   }

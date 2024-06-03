@@ -6,14 +6,14 @@ final class FireUserForgot extends IFirebaseAuth {
   FireUserForgot._();
 
   Future<void> sendPasswordToMail(String email) async {
-    if (!email.isEmail()) throw FireAuthException('invalid-email', 'email is not valid');
-    // - 
+    if (!email.isEmail()) throw FireAuthException('invalid-email');
+    // -
     try {
-      await auth.sendPasswordResetEmail(email: email);  
+      await auth.sendPasswordResetEmail(email: email);
     } on FirebaseAuthException catch (e) {
       throw FireAuthExceptionCode(e.code).message;
-    }catch (e) {
+    } catch (e) {
       throw FireAuthExceptionCode.unknown;
-    } 
+    }
   }
 }

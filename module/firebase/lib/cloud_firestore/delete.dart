@@ -1,8 +1,7 @@
 import 'package:firebase/firebase.dart';
 
 final class FirestoreDelete<T> extends ICloudFirestore<T> {
-
-  Future<void> setDelete(String docUid,Mapped data) async {
+  Future<void> setDelete(String docUid, Mapped data) async {
     try {
       data.update(
         'delete',
@@ -10,7 +9,7 @@ final class FirestoreDelete<T> extends ICloudFirestore<T> {
       );
       await collectionPathWithT.doc(docUid).update(data);
     } catch (e) {
-      
+      throw FirestoreException.unknown();
     }
   }
 }

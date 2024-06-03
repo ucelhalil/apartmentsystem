@@ -2,7 +2,7 @@ extension EmailRegexExtension on String {
   /// // Example:
   /// const String validEmail = "example@example.com";
   /// const String invalidEmail = "example";
-  /// 
+  ///
   /// // Check if the email is valid
   /// if (validEmail.isEmail()) {
   ///   // Email is valid
@@ -10,7 +10,8 @@ extension EmailRegexExtension on String {
   ///   // Email is invalid
   /// }
   bool isEmail() => RegExp(_emailPattern).hasMatch(this);
-  String get _emailPattern => r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+";
+  String get _emailPattern =>
+      r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+";
 
   /// // Example:
   /// const String validPassword = "Example123!";
@@ -21,8 +22,7 @@ extension EmailRegexExtension on String {
   /// } else {
   ///   // Password is invalid
   /// }
-  /// 
+  ///
   bool isPassword() => RegExp(_passwordPattern).hasMatch(this);
-  String get _passwordPattern => r"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$";
-
+  String get _passwordPattern => r"^(?=.*[A-Z])(?=.*\d)[A-Za-z\d]{8,}$";
 }

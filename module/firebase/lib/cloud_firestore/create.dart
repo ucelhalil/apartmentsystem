@@ -1,13 +1,15 @@
 import 'package:firebase/firebase.dart';
+import 'package:flutter/foundation.dart';
 
-final class FirestoreWrite<T> extends ICloudFirestore<T>{
+final class FirestoreWrite<T> extends ICloudFirestore<T> {
   String get docUid => collectionPathWithT.doc().id;
 
   Future<void> create(String uid, Mapped data) async {
     try {
       await collectionPathWithT.doc(uid).set(data);
     } catch (e) {
-      throw FirestoreException.unknown(e.toString());
+      kDebugMode ? debugPrint(e.toString()) : null;
+      throw FirestoreException.unknown();
     }
   }
 
@@ -15,7 +17,8 @@ final class FirestoreWrite<T> extends ICloudFirestore<T>{
     try {
       await collectionPathWithT.doc(uid).set(data);
     } catch (e) {
-      throw FirestoreException.unknown(e.toString());
+      kDebugMode ? debugPrint(e.toString()) : null;
+      throw FirestoreException.unknown();
     }
   }
 }

@@ -1,7 +1,7 @@
 import 'package:apptext/apptext.dart';
 import 'package:flutter/foundation.dart';
 
-LangNotifier langNotifier = LangNotifier(LangType.en);
+LangNotifier langNotifier = LangNotifier(LangType.tr);
 
 class LangNotifier extends ValueNotifier<LangType> {
   LangNotifier(super.value);

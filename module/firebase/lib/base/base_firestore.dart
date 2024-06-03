@@ -3,7 +3,6 @@ import 'package:firebase/firebase.dart';
 import 'package:flutter/foundation.dart';
 
 abstract class ICloudFirestore<T> extends IFirebaseUser {
-  
   FirebaseFirestore get firestore => FirebaseFirestore.instance;
 
   CollectionReference<Map<String, dynamic>> get _authCollection =>
@@ -12,10 +11,7 @@ abstract class ICloudFirestore<T> extends IFirebaseUser {
   DocumentReference<Map<String, dynamic>> get authUserPath {
     if (user == null) {
       if (kDebugMode) debugPrint('MyCloudFirestore User is null');
-      throw FirestoreException(
-          'not-find-user',
-          'This project have not a currentuser for firebase',
-          );
+      throw FirestoreException('not-find-user');
     }
     return _authCollection.doc(user!.uid);
   }
