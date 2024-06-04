@@ -1,4 +1,5 @@
 import 'package:apartment_system/index.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:codeofland/codeofland.dart';
 import 'package:codeofwidget/codeofwidget.dart';
 import 'package:flutter/material.dart';
@@ -18,7 +19,16 @@ class DashboardView extends StatelessWidget {
   }
 }
 
-class ModuleCardList extends StatelessWidget {
+mixin ModuleCardApartmentList on StatelessWidget {
+  TBLApartmentStream get apartmentStream => TBLApartmentStream();
+  Stream<QuerySnapshot<TBLApartment>> get stream =>
+      apartmentStream.withConverter(
+        (snapshot, _) => TBLApartment.fromJson(snapshot.data()!),
+        (model, _) => model.toJson(),
+      );
+}
+
+class ModuleCardList extends StatelessWidget with ModuleCardApartmentList {
   const ModuleCardList({super.key});
 
   @override
@@ -27,6 +37,23 @@ class ModuleCardList extends StatelessWidget {
       spacing: 10,
       runSpacing: 10,
       children: [
+        // ------------------------------
+
+        StreamBuilder(
+          stream: stream,
+          builder: (context, snapshot) {
+            if (snapshot.hasData) {
+              final int count = snapshot.data!.size;
+              return ModuleCard(
+                path: MyAsset.apartment.path,
+                title: 'Apartment $count',
+                route: MyRoute.apartment,
+              );
+            }
+            return const ConnectionWaiting();
+          },
+        ),
+        // ------------------------------
         ModuleCard(
           path: MyAsset.apartment.path,
           title: 'Apartment',
