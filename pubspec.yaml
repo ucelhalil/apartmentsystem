@@ -31,8 +31,8 @@ dependencies:
   flutter:
     sdk: flutter
 
-  apptext:
-    path: ./module/apptext
+  # apptext:
+  #   path: ./module/apptext
 
 
   # The following adds the Cupertino Icons font to your application.

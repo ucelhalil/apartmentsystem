@@ -1,5 +1,4 @@
 import 'package:apartment_system/index.dart';
-import 'package:apptext/apptext.dart';
 import 'package:codeofland/codeofland.dart';
 import 'package:codeofwidget/codeofwidget.dart';
 import 'package:flutter/material.dart';
@@ -34,8 +33,8 @@ class _PasswordFormFieldState extends State<PasswordFormField>
 
   CustomFormDecoration get decoration => CustomFormDecoration(
         context,
-        hintText: const FormTextLang().passwordHint,
-        labelText: const FormTextLang().password,
+        hintText: FormLangText.of.passwordHint,
+        labelText: FormLangText.of.password,
         suffixIcon: suffixIcon(),
         prefixIcon: prefixIcon(),
       );
@@ -57,9 +56,9 @@ class _PasswordFormFieldState extends State<PasswordFormField>
       );
 
   String? validator(String? value) {
-    if (value.isNullOrEmpty) return const FormErrorTextLang().required;
+    if (value.isNullOrEmpty) return FormLangText.of.required;
     if (!value!.isValidMediumPassword) {
-      return const FormErrorTextLang().passwordValidation;
+      return FormLangText.of.passwordValidation;
     }
     return null;
   }

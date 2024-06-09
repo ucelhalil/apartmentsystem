@@ -1,5 +1,4 @@
 import 'package:apartment_system/index.dart';
-import 'package:apptext/apptext.dart';
 import 'package:codeofland/codeofland.dart';
 import 'package:codeofwidget/codeofwidget.dart';
 import 'package:flutter/material.dart';
@@ -35,8 +34,8 @@ class _ConfirmPasswordFormFieldState extends State<ConfirmPasswordFormField>
 
   CustomFormDecoration get decoration => CustomFormDecoration(
         context,
-        hintText: const FormTextLang().confirmHint,
-        labelText: const FormTextLang().confirm,
+        hintText: FormLangText.of.confirmHint,
+        labelText: FormLangText.of.confirm,
         suffixIcon: suffixIcon(),
         prefixIcon: prefixIcon(),
       );
@@ -58,9 +57,9 @@ class _ConfirmPasswordFormFieldState extends State<ConfirmPasswordFormField>
       );
 
   String? validator(String? value) {
-    if (value.isNullOrEmpty) return const FormErrorTextLang().required;
+    if (value.isNullOrEmpty) return FormLangText.of.required;
     if (!value!.isValidMediumPassword) {
-      return const FormErrorTextLang().passwordValidation;
+      return FormLangText.of.passwordValidation;
     }
     return null;
   }

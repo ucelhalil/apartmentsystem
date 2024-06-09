@@ -1,5 +1,5 @@
-import 'package:apptext/apptext.dart';
 import 'package:flutter/material.dart';
+
 import 'index.dart';
 
 Future<void> main() async {
@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: const AppTextLang().materialTitle,
+      title: ApplicationLangText.of.title,
       theme: LightTheme().theme,
       routes: AppRoute().route,
       initialRoute: MyRoute.splash.name,

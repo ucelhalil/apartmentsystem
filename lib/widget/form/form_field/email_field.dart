@@ -1,5 +1,4 @@
 import 'package:apartment_system/index.dart';
-import 'package:apptext/apptext.dart';
 import 'package:codeofland/codeofland.dart';
 import 'package:codeofwidget/codeofwidget.dart';
 import 'package:flutter/material.dart';
@@ -27,15 +26,15 @@ class _EmailFormFieldState extends State<EmailFormField> {
 
   CustomFormDecoration get decoration => CustomFormDecoration(
         context,
-        labelText: const FormTextLang().email,
-        hintText: const FormTextLang().emailHint,
+        labelText: FormLangText.of.email,
+        hintText: FormLangText.of.emailHint,
         prefixIcon: prefixIcon(),
       );
 
   String? emailValidator(String? value) {
-    if (value.isNullOrEmpty) return const FormErrorTextLang().required;
+    if (value.isNullOrEmpty) return FormLangText.of.required;
     if (!value!.isValidEmailRegex) {
-      return const FormErrorTextLang().emailValidation;
+      return FormLangText.of.emailValidation;
     }
     return null;
   }

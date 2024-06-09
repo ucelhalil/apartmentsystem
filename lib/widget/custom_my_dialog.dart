@@ -4,19 +4,37 @@ import 'package:codeofwidget/codeofwidget.dart';
 import 'package:flutter/material.dart';
 
 class MyDialog {
+  final BuildContext context;
   final String message;
   final IconData icon;
 
-  MyDialog.error({required this.message, this.icon = Icons.error});
+  MyDialog.error(
+    this.context, {
+    required this.message,
+    this.icon = Icons.error,
+  });
 
-  MyDialog.success({required this.message, this.icon = Icons.check});
+  MyDialog.success(
+    this.context, {
+    required this.message,
+    this.icon = Icons.check,
+  });
 
-  MyDialog.info({required this.message, this.icon = Icons.info});
+  MyDialog.info(
+    this.context, {
+    required this.message,
+    this.icon = Icons.info,
+  });
 
-  Widget build() {
-    return CustomMyDialog(
-      message: message,
-      icon: icon,
+  Future build<T>() async {
+    await showDialog<T>(
+      context: context,
+      builder: (context) => CustomDialog(
+        child: CustomMyDialog(
+          message: message,
+          icon: icon,
+        ),
+      ),
     );
   }
 }
