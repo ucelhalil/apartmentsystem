@@ -84,10 +84,10 @@ packages:
     dependency: "direct main"
     description:
       name: codeofland
-      sha256: "471ba4a2fcc79f519ea01451c420201a417af4eafdc76fca0ddf3a25fe07ceca"
+      sha256: "717f90ca39c51e52cfc7732fc55dd1a615a310868c693d0caf469180128dad4b"
       url: "https://pub.dev"
     source: hosted
-    version: "1.5.1"
+    version: "1.5.2"
   codeofwidget:
     dependency: "direct main"
     description:
@@ -144,13 +144,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.3.1"
-  feautures:
-    dependency: "direct main"
-    description:
-      path: "module/feautures"
-      relative: true
-    source: path
-    version: "0.0.1"
   ffi:
     dependency: transitive
     description:
@@ -159,13 +152,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.1.2"
-  firebase:
-    dependency: "direct main"
-    description:
-      path: "module/firebase"
-      relative: true
-    source: path
-    version: "0.0.1"
   firebase_auth:
     dependency: "direct main"
     description:

@@ -1,0 +1,1 @@
+export './main_starter.dart';

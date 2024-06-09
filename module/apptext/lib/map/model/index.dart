@@ -1,1 +1,1 @@
-export './tbl_apartment_map.dart ';
+export './tbl_apartment_map.dart';

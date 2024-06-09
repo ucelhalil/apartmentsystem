@@ -3,7 +3,6 @@ part of 'forgot_form.dart';
 mixin ForgotFormMixin on State<ForgotForm> {
   late ScrollController scrollController;
   late ForgotFormController form;
-  FireUserForgot fireForgot = FireUserForgot.of;
 
   @override
   void initState() {
@@ -33,7 +32,7 @@ mixin ForgotFormMixin on State<ForgotForm> {
     final String email = form.emailController.text;
     // ---------------------
     try {
-      await fireForgot.sendPasswordToMail(email);
+      await FirebaseAuthManager.of.sendPasswordResetEmail(email);
     } catch (e) {
       if (context.mounted) {
         // ignore: use_build_context_synchronously

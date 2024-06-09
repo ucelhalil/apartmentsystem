@@ -1,8 +1,6 @@
 import 'package:apartment_system/index.dart';
 import 'package:apptext/apptext.dart';
 import 'package:codeofwidget/codeofwidget.dart';
-import 'package:feautures/feautures.dart';
-import 'package:firebase/firebase.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 

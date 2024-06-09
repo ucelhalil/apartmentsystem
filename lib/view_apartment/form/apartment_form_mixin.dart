@@ -3,14 +3,12 @@ part of 'apartment_form.dart';
 mixin _ApartmentFormMixin on State<ApartmentForm> {
   late ScrollController scrollController;
   late ApartmentFormController form;
-  late FirestoreWrite fireStoreWrite;
 
   @override
   void initState() {
     super.initState();
     scrollController = ScrollController();
     form = ApartmentFormController();
-    fireStoreWrite = FirestoreWrite<TBLApartment>();
   }
 
   @override
@@ -23,12 +21,12 @@ mixin _ApartmentFormMixin on State<ApartmentForm> {
   Future<void> submit() async {
     if (!form.isValidate()) return;
     // --- Apartment ---
-    final uid = fireStoreWrite.docUid;
+    final uid =  FirestoreManager.instance.tblApartment.newDocUid;
     //
     final apartment = TBLApartment(
       uid: uid,
       isActive: true,
-      createdBy: FireUser.of.currentUser?.email,
+      createdBy: FirestoreUser.of.user?.email,
       createdDate: DateTime.now(),
       // ---  ---
       name: form.nameValue,
@@ -40,7 +38,7 @@ mixin _ApartmentFormMixin on State<ApartmentForm> {
     );
     // --- Add Apartment ---
     try {
-      await fireStoreWrite.create(uid,  apartment.toJson());
+      await  FirestoreManager.instance.tblApartment.addDoc(apartment);
     } catch (e) {
       return errorDialog(e.toString());
     }

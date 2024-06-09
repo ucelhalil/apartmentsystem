@@ -3,7 +3,6 @@ part of 'register_form.dart';
 mixin RegisterFormMixin on State<RegisterForm> {
   late ScrollController scrollController;
   late RegisterFormController form;
-  FireUserRegister fireRegister = FireUserRegister.of;
 
   @override
   void initState() {
@@ -29,26 +28,35 @@ mixin RegisterFormMixin on State<RegisterForm> {
     }
     // ---------------------
     try {
-      final response = await fireRegister.createWithEmailAndPassword(
-        email: form.emailController.text,
-        password: form.passwordController.text,
+      final response = await FirebaseAuthManager.of.createUserWithEmailAndPassword(
+        form.emailController.text,
+        form.passwordController.text,
       );
+
+      if (response.user == null) throw CustomFirebaseAuthException('not-register-user');
       //
       TBLUser user = TBLUser(
         uid: response.user?.uid,
         email: response.user?.email,
         createdDate: DateTime.now(),
         planDate: DateTime.now().add(const Duration(days: 365)),
+        isActive: true,
+        isDeleted: false,
+        language: true,
+        theme: true,
+        createdBy: response.user?.email,
       );
       //
-      await FirestoreUser().createUserDoc(user.toJson());
+      final responseData = await FirestoreUser.of.createData(user);
+      //
+      if (responseData == null) throw CustomFirestoreException('user-data-not-create');
       //
     } catch (e) {
       kDebugMode ? debugPrint(e.toString()) : null;
       return errorDialog(FirebaseAuthLang().get(e.toString()));
     }
     // ---------------------
-    if (FireUser.of.currentUser?.emailVerified == false) {
+    if (FirestoreUser.of.user?.emailVerified == false) {
       return goToEmailVerified();
     }
     // ---------------------

@@ -1,10 +1,12 @@
-import 'package:firebase/firebase.dart';
+// ignore_for_file: avoid_print
+
+import 'package:apartment_system/index.dart';
 
 void main() async {
   try {
-    final response = await FireUserRegister.of.createWithEmailAndPassword(
-      email: 'selam@info.net',
-      password: 'Selam123',
+    final response = await FirebaseAuthManager.of.createUserWithEmailAndPassword(
+       'selam@info.net',
+       'Selam123',
     );
     print(response.user?.uid);
   } catch (e) {
